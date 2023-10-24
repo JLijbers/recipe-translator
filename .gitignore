@@ -1,0 +1,6 @@
+.idea/
+.gpteng/
+.env
+.gpte_consent
+__pycache__/
+.gitattributes

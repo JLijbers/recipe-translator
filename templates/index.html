@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Translator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="text-center">Recipe Translator</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <form method="POST" class="form" onsubmit="showSpinner(); return true;">
+                <script>
+                    function showSpinner() {
+                        document.getElementById('spinner').style.display = 'block';
+                    }
+                </script>
+                <div class="form-group">
+                    <label for="url">Recipe URL:</label>
+                    <input type="text" class="form-control" id="url" name="url" required>
+                </div>
+                <button type="submit" class="btn">Translate</button>
+                <div id="spinner" style="display: none;">
+                    <img src="{{ url_for('static', filename='images/spinner.gif') }}" alt="Loading...">
+                </div>
+            </form>
+            {% if recipe_text %}
+                <div class="recipe">
+                    <h2>Recipe</h2>
+                    <p>{{ recipe_text }}</p>
+                    <script>
+                        document.getElementById('spinner').style.display = 'none';
+                    </script>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p class="text-center">© 2022 Recipe Translator</p>
+        </div>
+    </footer>
+</body>
+</html>
