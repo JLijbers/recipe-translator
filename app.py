@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from scraper import Scraper
-from translator import GPTTranslator
+from translator import GPT
 from langdetect import detect
 
 app = Flask(__name__)
@@ -12,9 +12,10 @@ def index():
         scraper = Scraper(url)
         recipe_text = scraper.get_data()
         selected_language = request.form.get('language')
-        translator = GPTTranslator()
-        translated_text = translator.translate(recipe_text, selected_language)
-        return render_template('index.html', recipe_text=translated_text)
+        gpt_caller = GPT()
+        neat_recipe = gpt_caller.filter(recipe_text)
+        translated_recipe = gpt_caller.translate_recipe(neat_recipe, selected_language)
+        return render_template('index.html', recipe_text=translated_recipe)
     return render_template('index.html')
 
 if __name__ == '__main__':
