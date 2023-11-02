@@ -8,15 +8,27 @@ class GPT:
 
     def filter(self, text):
         prompt_text = f"Take the following text which contains a recipe. Filter the text so only the ingredients and " \
-                      f"the cooking steps remain. Return them in two separate strings." \
+                      f"the cooking steps remain. Return your result using the headings 'Ingredients:' and " \
+                      f"'Cooking instructions:'" \
                       f"This is the recipe: \n\n{text}"
         response = openai.Completion.create(
             model="gpt-3.5-turbo-instruct",
             prompt=prompt_text,
             max_tokens=2500
         )
-        filtered_recipe = response.choices[0].text.strip()
-        return filtered_recipe
+        filtered_text = response.choices[0].text.strip()
+        ingredients, instructions = self.separate_recipe(filtered_text)
+        return ingredients, instructions
+
+    def separate_recipe(self, text):
+        """
+        LLM GENERATED
+        This function separates the ingredients and instructions from the filtered text.
+        """
+        split_text = text.split('Cooking instructions:')
+        ingredients = split_text[0].replace('Ingredients:', '').strip()
+        instructions = split_text[1].strip()
+        return ingredients, instructions
 
     def translate_recipe(self, filtered_recipe, selected_language):
         # Enhanced prompt for better translation

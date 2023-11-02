@@ -41,10 +41,17 @@
                     <img src="{{ url_for('static', filename='images/spinner.gif') }}" alt="Loading...">
                 </div>
             </form>
-            {% if recipe_text %}
+            {% if ingredients and instructions %}
                 <div class="recipe mt-4">
                     <h2>Translated Recipe</h2>
-                    <p>{{ recipe_text }}</p>
+                    <div class="ingredients">
+                        <h3>Ingredients</h3>
+                        <p>{{ ingredients }}</p>
+                    </div>
+                    <div class="instructions">
+                        <h3>Instructions</h3>
+                        <p>{{ instructions }}</p>
+                    </div>
                     <script>
                         document.getElementById('spinner').style.display = 'none';
                     </script>
