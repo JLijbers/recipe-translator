@@ -57,9 +57,23 @@ footer {
     margin-bottom: 20px;
 }
 
+.ingredients img, .ingredients i {
+    max-width: 10%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
 .instructions {
     padding: 20px;
     background-color: #f8f8f8;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.instructions img, .instructions i {
+    max-width: 10%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
 }

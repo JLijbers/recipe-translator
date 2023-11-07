@@ -46,10 +46,12 @@
                     <h2>Translated Recipe</h2>
                     <div class="ingredients">
                         <h3>Ingredients</h3>
+                        <img src="{{ url_for('static', filename='images/ingredients-icon.png') }}" alt="Icon representing ingredients">
                         <p>{{ ingredients }}</p>
                     </div>
                     <div class="instructions">
                         <h3>Instructions</h3>
+                        <img src="{{ url_for('static', filename='images/instructions-icon.png') }}" alt="Icon representing instructions">
                         <p>{{ instructions }}</p>
                     </div>
                     <script>
