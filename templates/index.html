@@ -41,18 +41,26 @@
                     <img src="{{ url_for('static', filename='images/spinner.gif') }}" alt="Loading...">
                 </div>
             </form>
-            {% if ingredients and instructions %}
+            {% if ingredients_list and instructions_list %}
                 <div class="recipe mt-4">
                     <h2>Translated Recipe</h2>
                     <div class="ingredients">
                         <h3>Ingredients</h3>
                         <img src="{{ url_for('static', filename='images/ingredients-icon.png') }}" alt="Icon representing ingredients">
-                        <p>{{ ingredients }}</p>
+                        <ul>
+                        {% for ingredient in ingredients_list %}
+                            <li>{{ ingredient }}</li>
+                        {% endfor %}
+                        </ul>
                     </div>
                     <div class="instructions">
                         <h3>Instructions</h3>
                         <img src="{{ url_for('static', filename='images/instructions-icon.png') }}" alt="Icon representing instructions">
-                        <p>{{ instructions }}</p>
+                        <ol>
+                        {% for instruction in instructions_list %}
+                            <li>{{ instruction }}</li>
+                        {% endfor %}
+                        </ol>
                     </div>
                     <script>
                         document.getElementById('spinner').style.display = 'none';

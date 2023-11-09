@@ -39,5 +39,5 @@ class GPT:
             prompt=prompt_text,
             max_tokens=2500
         )
-        translated_recipe = response.choices[0].text.strip()
-        return translated_recipe
+        translated_recipe_list = response.choices[0].text.strip().split('\n')
+        return translated_recipe_list

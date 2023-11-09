@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request
 from scraper import Scraper
 from gpt import GPT
-from langdetect import detect
 
 app = Flask(__name__)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -14,10 +14,13 @@ def index():
         selected_language = request.form.get('language')
         gpt_caller = GPT()
         ingredients, instructions = gpt_caller.filter(recipe_text)
-        translated_ingredients = gpt_caller.translate_recipe(ingredients, selected_language)
-        translated_instructions = gpt_caller.translate_recipe(instructions, selected_language)
-        return render_template('index.html', ingredients=translated_ingredients, instructions=translated_instructions)
+        translated_ingredients_list = gpt_caller.translate_recipe(ingredients, selected_language)
+        translated_instructions_list = gpt_caller.translate_recipe(instructions, selected_language)
+        return render_template('index.html',
+                               ingredients_list=translated_ingredients_list,
+                               instructions_list=translated_instructions_list)
     return render_template('index.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
