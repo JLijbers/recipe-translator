@@ -38,7 +38,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Translate</button>
                 <div id="spinner" style="display: none;">
-                    <img src="{{ url_for('static', filename='images/spinner.gif') }}" alt="Loading..." style="width:50%; height:auto;">
+                    <img src="{{ url_for('static', filename='images/spinner.gif') }}" alt="Loading..." style="max-width:20px; max-height:20px;">
                 </div>
             </form>
             {% if ingredients_list and instructions_list %}
