@@ -43,6 +43,7 @@
             </form>
             {% if ingredients_list and instructions_list %}
                 <div class="recipe mt-4">
+                    <h3>Servings: {{ servings }}</h3>
                     <h2>Translated Recipe</h2>
                     <div class="ingredients">
                         <h3>Ingredients</h3>
@@ -61,7 +62,6 @@
                             <li>{{ instruction }}</li>
                         {% endfor %}
                         </ol>
-                    </div>
                     <script>
                         document.getElementById('spinner').style.display = 'none';
                     </script>

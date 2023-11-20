@@ -13,12 +13,11 @@ def index():
         recipe_text = scraper.get_data()
         selected_language = request.form.get('language')
         gpt_caller = GPT()
-        ingredients, instructions = gpt_caller.filter(recipe_text)
+        ingredients, instructions, servings = gpt_caller.filter(recipe_text)
         translated_ingredients_list = gpt_caller.translate_recipe(ingredients, selected_language)
         translated_instructions_list = gpt_caller.translate_recipe(instructions, selected_language)
-        return render_template('index.html',
-                               ingredients_list=translated_ingredients_list,
-                               instructions_list=translated_instructions_list)
+        return render_template('index.html', ingredients_list=translated_ingredients_list,
+                               instructions_list=translated_instructions_list, servings=servings)
     return render_template('index.html')
 
 
